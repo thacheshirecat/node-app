@@ -1,6 +1,8 @@
+///////////////////
+//
 //Requiring Modules
 //
-//
+///////////////////
 // const names = require('./birds')
 // const sayBird = require('./bird-utils')
 
@@ -8,11 +10,11 @@
 // sayBird(names.bird2)
 // sayBird(names.bird3)
 
-//
+////////////
 //
 //OS Module
 //
-//
+////////////
 // const os = require('os')
 
 // const user = os.userInfo()
@@ -28,11 +30,11 @@
 
 // console.log(currentOS)
 
-//
+/////////////
 //
 //Synchronous
 //
-//
+/////////////
 // const fs = require('fs')
 
 // const birdReader = fs.readFileSync('./content/content.txt','utf8')
@@ -42,11 +44,11 @@
 
 // fs.writeFileSync('./content/birdout.txt', `The birds are learning: ${birdReader}! ${birdReader2}`)
 
-//
+///////////////////////////////////
 //
 //Callbacks for async functionality
 //
-//
+///////////////////////////////////
 // const { readFile, writeFile } = require('fs')
 
 // console.log('start')
@@ -73,11 +75,11 @@
 // })
 // console.log('starting next task')
 
-//
+/////////////
 //
 //HTTP Module
 //
-//
+/////////////
 // const http = require('http')
 
 // const server = http.createServer((req,res) => {
@@ -99,8 +101,97 @@
 // server.listen(5000)
 
 
-const _ = require('lodash')
+// const _ = require('lodash')
 
-const items = [1,[2,[3,[4]]]]
-const newItems = _.flattenDeep(items);
-console.log(newItems)
+// const items = [1,[2,[3,[4]]]]
+// const newItems = _.flattenDeep(items);
+// console.log(newItems)
+
+// let value = 0
+
+// console.log('start')
+
+// setInterval(() => {
+//     if(value <= 9)
+//     {
+//         value += 2
+//         console.log(value)
+//     }
+// },2000)
+
+///////////
+//
+//Promises
+//
+///////////
+// const { readFile, writeFile } = require('fs').promises
+// const util = require('util')
+// const readFilePromise = util.promisify(readFile)
+// const writeFilePromise = util.promisify(writeFile)
+
+// const start = async() => {
+//     try {
+//         const first = await readFile('./content/content.txt', 'utf8')
+//         const second = await readFile('./content/outofcontext.txt', 'utf8')
+//         await writeFile('./content/birdout.txt', `Promisify says: ${first} and ${second}`, { flag: 'a'})
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }    
+// }
+
+// start()
+
+// const getText = (path) => {
+//     return new Promise((resolve,reject)=>{
+//         readFile(path, 'utf8', (err,data)=> {
+//             if(err)
+//             {
+//                 reject(err)
+//             }
+//             else {
+//                 resolve(data)
+//             }
+//         })
+//     })
+// }
+
+// getText('./content/content.txt')
+//     .then(result => console.log(result))
+//     .catch(err =>console.log(err))
+
+
+////////
+//
+//Events
+//
+////////
+// const EventEmitter = require('events')
+
+// const customEmitter = new EventEmitter()
+
+// customEmitter.on('response',(name,id)=>{
+//     console.log(`data recieved ${name} and ${id}`)
+// })
+// customEmitter.on('response',()=>{
+//     console.log(`Birds eat seed`)
+// })
+
+// customEmitter.emit('response', 'Bord', 2)
+
+
+/////////
+//
+//Streams
+//
+/////////
+// const { createReadStream } = require('fs')
+
+// const stream = createReadStream('./content/beegyoshi.txt', {highWaterMark: 90000, encoding: 'utf8'})
+
+// stream.on('data', (result) => {
+//     console.log(result)
+// })
+// stream.on('error', (err)=> {
+//     console.log(err)
+// })
